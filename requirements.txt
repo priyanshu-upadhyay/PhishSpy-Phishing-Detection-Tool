@@ -1,0 +1,8 @@
+requests
+tldextract
+python-whois
+favicon
+dnspython
+xmltodict
+tarfile
+datetime
