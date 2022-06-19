@@ -30,9 +30,6 @@ def checkcount():
     conn.close()
     return {"status" : 200, "count": curr_count}
 
-@app.route('/')
-def app():
-    return {"status" : 200, "message": "Welcome to PhishSpy Tool"}
 
 
 
