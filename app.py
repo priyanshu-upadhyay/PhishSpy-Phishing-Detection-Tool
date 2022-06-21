@@ -5,10 +5,10 @@ from flask_cors import CORS, cross_origin
 import sqlite3
 
 app = Flask(__name__)
-CORS(app, support_credentials=True)
+CORS(app)
 
 @app.route('/checkphishing', methods=["POST"])
-@cross_origin(supports_credentials=True)
+@cross_origin(origin='*')
 def checkphishing():
     content_type = request.headers.get('Content-Type')
     if (content_type == 'application/json'):
@@ -25,7 +25,7 @@ def checkphishing():
         return "Content-Type not supported!"
 
 @app.route('/count')
-@cross_origin(supports_credentials=True)
+@cross_origin(origin='*')
 def checkcount():
     conn = sqlite3.connect("database.db")
     cur = conn.cursor()
@@ -41,4 +41,4 @@ def checkcount():
 
 if __name__ == '__main__':
 
-	app.run(debug=True)
+	app.run(host='0.0.0.0', port=8000, debug=True)
