@@ -1,11 +1,14 @@
 
 from flask import Flask, request, json
 from main import main
+from flask_cors import CORS, cross_origin
 import sqlite3
 
 app = Flask(__name__)
+CORS(app, support_credentials=True)
 
 @app.route('/checkphishing', methods=["POST"])
+@cross_origin(supports_credentials=True)
 def checkphishing():
     content_type = request.headers.get('Content-Type')
     if (content_type == 'application/json'):
@@ -22,6 +25,7 @@ def checkphishing():
         return "Content-Type not supported!"
 
 @app.route('/count')
+@cross_origin(supports_credentials=True)
 def checkcount():
     conn = sqlite3.connect("database.db")
     cur = conn.cursor()
