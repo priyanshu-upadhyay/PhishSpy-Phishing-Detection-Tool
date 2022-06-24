@@ -34,6 +34,11 @@ def checkcount():
     conn.close()
     return {"status" : 200, "count": curr_count}
 
+@app.route('/')
+@cross_origin(origin='*')
+def home():
+    return {"status" : 200, "message": "Welcome to PhishSpy API"}
+
 
 
 
